@@ -4,6 +4,7 @@ require(tcltk)
 # Get R source data from files
 source("runAnalysis.R")
 source("createAnalysis.R")
+source("adapt.R")
 
 # Main GUI function
 runGUI = function(){

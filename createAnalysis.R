@@ -1,4 +1,7 @@
 drawCreateAnalysisWindow = function(){
+	
+	print(getFunctions())
+
 	# Create window
 	base = tktoplevel()
 	tkwm.title(base,'DataSHIELD GUI')
