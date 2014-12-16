@@ -8,7 +8,7 @@ library(dsGraphicsClient)
 # Login details
 server <- "Single Site Test"
 url <- "192.168.56.105:8080"
-user <- "administator"
+user <- "administrator"
 password <- "password"
 table <- "SingleSiteTest.CNSIM"
 
