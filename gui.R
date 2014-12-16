@@ -6,6 +6,10 @@ source("runAnalysis.R")
 source("createAnalysis.R")
 source("adapt.R")
 
+# Import Opal
+library(opal)
+library(opaladmin)
+
 # Main GUI function
 runGUI = function(){
 	# Create window
@@ -50,4 +54,10 @@ runGUI = function(){
 	tkpack(tkbutton(optionframe,text='Create Analysis',command=createAnalysisButton),side='left')
 }
 
+
+
+# Get list available DS functions and import packages
+dsFunctionList <- getFunctions()
+
+# Run the first GUI window
 runGUI()

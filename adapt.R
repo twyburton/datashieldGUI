@@ -14,8 +14,10 @@ getFunctions = function() {
 	for( i in 1:length(packagesToCheck) ){
 		if ( match( packagesToCheck[i] , packageList , nomatch = -1 ) > 0 ) {
 			dsPackagesInstalled <- c( dsPackagesInstalled , packagesToCheck[i] )
+			library( packagesToCheck[i] , character.only = TRUE)
 		}
 	}
+
 
 	# Initilise list of all functions
 	dsAllFunctions <- vector()
