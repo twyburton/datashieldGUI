@@ -1,10 +1,3 @@
-# Load opal and datashield libraries
-library(opal)
-library(opaladmin)
-library(dsBaseClient)
-library(dsStatsClient)
-library(dsGraphicsClient)
-
 # Login details
 server <- "Single Site Test"
 url <- "192.168.56.105:8080"
