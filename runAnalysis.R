@@ -1,3 +1,3 @@
 runAnalysisFromFile = function(scriptName){
-	print(scriptName)
+	source(scriptName, print.eval = TRUE)
 }
