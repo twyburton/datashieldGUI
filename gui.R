@@ -1,7 +1,6 @@
 # Get R source data from files
 source("runAnalysis.R")
 source("createAnalysis.R")
-source("adapt.R")
 source("packageInstaller.R")
 
 
@@ -50,11 +49,11 @@ runGUI = function(){
 }
 
 
-# Check Core Packages are installed
-packages()
+# Check Core Packages are installed and load them. If not installed then install them.
+opalPackages()
 
 # Get list available DS functions and import packages
-dsFunctionList <- getFunctions()
+dsFunctionList <- getDsFunctions()
 
 # Run the first GUI window
 runGUI()
