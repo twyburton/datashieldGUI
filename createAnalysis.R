@@ -55,6 +55,8 @@ drawCreateAnalysisWindow = function(){
 				dataToWrite[ 10 + i ] <- functionQueue[ i ]
 			}
 
+			dataToWrite[ 10 + functionQueueInc + 1 ] <- "datashield.logout(opals)"
+
 		writeLines(dataToWrite,fileConnection)
 
 		# Close file connection
