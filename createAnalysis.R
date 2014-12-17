@@ -25,7 +25,10 @@ drawCreateAnalysisWindow = function(){
 	########################### WINDOW FUNCTIONS SECTION ###########################
 
 	# Set up destory window
-	destroy = function(...)tkdestroy(base)
+	destroy = function(...){
+		tkdestroy(base)
+		runGUI()
+	}
 
 	# Save script
 	run = function(...){
@@ -206,5 +209,5 @@ drawCreateAnalysisWindow = function(){
 
 	# Control Buttons
 	tkpack(tkbutton(windowframe,text='Save Script',command=run),side='left', pady=c(10,10) , padx=c(10,5))
-	tkpack(tkbutton(windowframe,text='Quit',command=destroy),side='left', pady=c(10,10) , padx=c(5,10))
+	tkpack(tkbutton(windowframe,text='Back',command=destroy),side='left', pady=c(10,10) , padx=c(5,10))
 }
