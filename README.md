@@ -18,6 +18,7 @@ The DataSHIELD Package Installer is used to install DataSHIELD packages on R. Th
 The GUI:
 
 - Manages installing and importing opal packages
+- Manages installing DataSHIELD packages
 - Manages importing correct ds packages before executing a script
 - Assists the user in creating DataSHIELD scripts
 
