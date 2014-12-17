@@ -41,9 +41,14 @@ drawCreateAnalysisWindow = function(){
 			dataToWrite[4] <- paste0( "user <- '" , toString(tclvalue(user_)) , "'" ,sep="")
 			dataToWrite[5] <- paste0( "password <- '" , toString(tclvalue(password_)) , "'" ,sep="")
 			dataToWrite[6] <- paste0( "table <- '" , toString(tclvalue(table_)) , "'" ,sep="")
-			dataToWrite[7] <- paste0( "myvars <- '" , toString(tclvalue(variables_)) , "'" ,sep="")
+			dataToWrite[7] <- paste0( "myvars <- " , toString(tclvalue(variables_)) ,sep="")
 			dataToWrite[8] <- "logindata <- data.frame(server,url,user,password,table)"
-			dataToWrite[9] <- "opals <- datashield.login(logins=logindata, variables=myvars , assign = TRUE)"
+
+			if ( toString(tclvalue(variables_)) == "NULL" ){
+				dataToWrite[9] <- "opals <- datashield.login(logins=logindata, assign = TRUE)"
+			} else {
+				dataToWrite[9] <- "opals <- datashield.login(logins=logindata, variables=myvars , assign = TRUE)"
+			}
 
 
 			for( i in 1:(functionQueueInc-1) ){
