@@ -35,6 +35,11 @@ runGUI = function(){
 		destroyMainMenu() # Destroy menu window
 	}
 
+	# Function called when the user presses button to go to install packages menu
+	createDatashieldPackageInstaller = function(){
+		destroyMainMenu()	
+		datashieldPackageInstaller()
+	}
 
 	# Destroy Window function
 	destroyMainMenu = function(...)tkdestroy(mainMenu)
@@ -44,8 +49,18 @@ runGUI = function(){
 	tkpack(optionframe)
 
 	# Control Buttons
+
+	installerframe = tkframe(mainMenu)
+	quitframe = tkframe(mainMenu)
+
 	tkpack(tkbutton(optionframe,text='Run Analysis',command=runAnalysisButton),side='left',pady=c(10,10) , padx=c(10,5))
-	tkpack(tkbutton(optionframe,text='Create Analysis',command=createAnalysisButton),side='left',pady=c(10,10) , padx=c(5,10))
+	tkpack(tkbutton(optionframe,text='Create Analysis',command=createAnalysisButton),side='left',pady=c(10,10) , padx=c(5,5))
+	tkpack(tkbutton(installerframe,text='DataSHIELD Package Installer',command=createDatashieldPackageInstaller),side='top',pady=c(10,10) , padx=c(5,10))
+	tkpack(tkbutton(quitframe,text='Quit',command=destroyMainMenu),side='top',pady=c(10,10) , padx=c(5,10))
+
+	tkpack(installerframe)
+	tkpack(quitframe)
+
 }
 
 
