@@ -24,8 +24,8 @@ runGUI = function(){
 		if( !nchar(scriptFileName) ){
 			tkmessageBox(message = "No file was selected!")
 		} else {
-			runAnalysisFromFile(scriptFileName)
 			destroyMainMenu() # Destroy menu window
+			runAnalysisFromFile(scriptFileName)
 		}
 	}
 
