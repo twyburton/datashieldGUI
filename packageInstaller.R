@@ -63,12 +63,15 @@ getDsFunctions = function() {
 	# Initilise list of all functions
 	dsAllFunctions <- vector()
 
-	# Go through all the ds packages and add all its functions to dsAllFunctions list
-	for( i in 1:length(dsPackagesInstalled) ){
-		functions <- ls(paste0( "package:" , dsPackagesInstalled[i]))
+	if ( length(dsPackagesInstalled) != 0 ){
+
+		# Go through all the ds packages and add all its functions to dsAllFunctions list
+		for( i in 1:length(dsPackagesInstalled) ){
+			functions <- ls(paste0( "package:" , dsPackagesInstalled[i]))
 		
-		for( j in 1:length(functions) ){
-			dsAllFunctions <- c (dsAllFunctions, functions[j])
+			for( j in 1:length(functions) ){
+				dsAllFunctions <- c (dsAllFunctions, functions[j])
+			}
 		}
 
 	}
