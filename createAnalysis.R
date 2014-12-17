@@ -39,12 +39,23 @@ drawCreateAnalysisWindow = function(){
 
 			dataToWrite <- vector()
 			dataToWrite[1] <- "#%ds%1"
-			dataToWrite[2] <- paste0( "server <- '" , toString(tclvalue(servername_)) , "'" ,sep="")
-			dataToWrite[3] <- paste0( "url <- '" , toString(tclvalue(url_)) , "'" ,sep="")
-			dataToWrite[4] <- paste0( "user <- '" , toString(tclvalue(user_)) , "'" ,sep="")
-			dataToWrite[5] <- paste0( "password <- '" , toString(tclvalue(password_)) , "'" ,sep="")
-			dataToWrite[6] <- paste0( "table <- '" , toString(tclvalue(table_)) , "'" ,sep="")
-			dataToWrite[7] <- paste0( "myvars <- " , toString(tclvalue(variables_)) ,sep="")
+
+			if (  grepl( "," , toString(tclvalue(servername_)) )  ){ # Multiple Servers
+				dataToWrite[2] <- paste0( "server <- " 		, strsplit( toString(tclvalue(servername_)), 	"," ) ,sep="")
+				dataToWrite[3] <- paste0( "url <- " 		, strsplit( toString(tclvalue(url_)) ,		"," ) ,sep="")
+				dataToWrite[4] <- paste0( "user <- " 		, strsplit( toString(tclvalue(user_)) , 	"," ) ,sep="")
+				dataToWrite[5] <- paste0( "password <- " 	, strsplit( toString(tclvalue(password_)) , 	"," ) ,sep="")
+				dataToWrite[6] <- paste0( "table <- " 		, strsplit( toString(tclvalue(table_)) , 	"," ) ,sep="")
+				dataToWrite[7] <- paste0( "myvars <- " 		, strsplit( toString(tclvalue(variables_)) , 	"," ) ,sep="")
+			} else {						 # Single Server
+				dataToWrite[2] <- paste0( "server <- '" 	, toString(tclvalue(servername_))	, "'" ,sep="")
+				dataToWrite[3] <- paste0( "url <- '" 		, toString(tclvalue(url_)) 		, "'" ,sep="")
+				dataToWrite[4] <- paste0( "user <- '" 		, toString(tclvalue(user_)) 		, "'" ,sep="")
+				dataToWrite[5] <- paste0( "password <- '" 	, toString(tclvalue(password_)) 	, "'" ,sep="")
+				dataToWrite[6] <- paste0( "table <- '" 		, toString(tclvalue(table_)) 		, "'" ,sep="")
+				dataToWrite[7] <- paste0( "myvars <- '" 	, toString(tclvalue(variables_)) 	, "'" ,sep="")
+			}
+
 			dataToWrite[8] <- "logindata <- data.frame(server,url,user,password,table)"
 
 			if ( toString(tclvalue(variables_)) == "NULL" ){
