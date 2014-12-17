@@ -50,11 +50,12 @@ drawCreateAnalysisWindow = function(){
 				dataToWrite[9] <- "opals <- datashield.login(logins=logindata, variables=myvars , assign = TRUE)"
 			}
 
-
+			dataToWrite[ 10 ] <- ""
 			for( i in 1:(functionQueueInc-1) ){
 				dataToWrite[ 10 + i ] <- functionQueue[ i ]
 			}
 
+			dataToWrite[ 10 + functionQueueInc ] <- ""
 			dataToWrite[ 10 + functionQueueInc + 1 ] <- "datashield.logout(opals)"
 
 		writeLines(dataToWrite,fileConnection)
