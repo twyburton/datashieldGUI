@@ -22,8 +22,12 @@ drawCreateAnalysisWindow = function(){
 	base = tktoplevel()
 	tkwm.title(base,'DataSHIELD GUI')
 
+	########################### WINDOW FUNCTIONS SECTION ###########################
+
 	# Set up destory window
 	destroy = function(...)tkdestroy(base)
+
+	# Save script
 	run = function(...){
 		# Save ds script to file
 		filenameToSave <- toString(tclvalue(savename_))
@@ -41,6 +45,11 @@ drawCreateAnalysisWindow = function(){
 			dataToWrite[8] <- "logindata <- data.frame(server,url,user,password,table)"
 			dataToWrite[9] <- "opals <- datashield.login(logins=logindata, variables=myvars , assign = TRUE)"
 
+
+			for( i in 1:(functionQueueInc-1) ){
+				dataToWrite[ 10 + i ] <- functionQueue[ i ]
+			}
+
 		writeLines(dataToWrite,fileConnection)
 
 		# Close file connection
@@ -49,6 +58,18 @@ drawCreateAnalysisWindow = function(){
 		tkdestroy(base)
 		runGUI()
 	}
+
+	# Save function to queue
+	saveFunction = function(){
+
+		functionQueue[ functionQueueInc ] <<- toString(tclvalue(functioninput_))
+		functionQueueInc <<- functionQueueInc + 1
+
+	}
+
+	########################### END WINDOW FUNCTIONS SECTION ###########################
+
+
 
 	# Create main frame to hold componenets
 	windowframe = tkframe(base)
@@ -123,6 +144,31 @@ drawCreateAnalysisWindow = function(){
 	########################### END DATA SELECTION SECTION ###########################
 	########################### DS FUNCTIONS SECTION ###########################
 
+	numberDsFunctions <- length( dsFunctionList )
+
+	functionQueue <<- vector() # Holds list of functions
+	functionQueueInc <- 1;	  # Next function index to save
+
+	# Create frame to hold data section
+	functionframe <- tkframe(windowframe)
+
+	functionframe0 <- tkframe(functionframe)
+	tkpack(tklabel(functionframe0,text='DataSHIELD FUNCTIONS', width=20),side='left')
+
+	functionframe1 <- tkframe(functionframe)
+	tkpack(tklabel(functionframe1,text='Function', width=9),side='left')
+	functioninput_ <- tclVar( "" )
+	tkpack(tkentry(functionframe1,width=50,textvariable=functioninput_), side='left', pady=c(2,2), padx=c(2,5))
+
+	tkpack(tkbutton(functionframe,text='Save Function',command=saveFunction ), side='bottom', pady=c(10,10) )
+
+	# Pack input frames
+	tkpack(functionframe0,side='top')
+	tkpack(functionframe1,side='top')
+
+	tkpack(functionframe)
+
+
 	########################### END DS FUNCTIONS SECTION ###########################
 	########################### SAVE SECTION ###########################
 
@@ -136,6 +182,7 @@ drawCreateAnalysisWindow = function(){
 	tkpack(tklabel(saveframe1,text='Script Save Name', width=20),side='left')
 	savename_ = tclVar( "myscript.ds" )
 	tkpack(tkentry(saveframe1,width=30,textvariable=savename_), side='left', pady=c(2,2), padx=c(2,5))
+
 
 	# Pack input frames
 	tkpack(saveframe0,side='top')
