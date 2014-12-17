@@ -70,6 +70,7 @@ drawCreateAnalysisWindow = function(){
 		functionQueue[ functionQueueInc ] <<- toString(tclvalue(functioninput_))
 		functionQueueInc <<- functionQueueInc + 1
 
+
 	}
 
 	########################### END WINDOW FUNCTIONS SECTION ###########################
@@ -162,7 +163,7 @@ drawCreateAnalysisWindow = function(){
 
 	functionframe1 <- tkframe(functionframe)
 	tkpack(tklabel(functionframe1,text='Function', width=9),side='left')
-	functioninput_ <- tclVar( "" )
+	functioninput_ <<- tclVar( "" )
 	tkpack(tkentry(functionframe1,width=50,textvariable=functioninput_), side='left', pady=c(2,2), padx=c(2,5))
 
 	tkpack(tkbutton(functionframe,text='Save Function',command=saveFunction ), side='bottom', pady=c(10,10) )
