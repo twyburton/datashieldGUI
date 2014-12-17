@@ -44,8 +44,8 @@ runGUI = function(){
 	tkpack(optionframe)
 
 	# Control Buttons
-	tkpack(tkbutton(optionframe,text='Run Analysis',command=runAnalysisButton),side='left')
-	tkpack(tkbutton(optionframe,text='Create Analysis',command=createAnalysisButton),side='left')
+	tkpack(tkbutton(optionframe,text='Run Analysis',command=runAnalysisButton),side='left',pady=c(10,10) , padx=c(10,5))
+	tkpack(tkbutton(optionframe,text='Create Analysis',command=createAnalysisButton),side='left',pady=c(10,10) , padx=c(5,10))
 }
 
 

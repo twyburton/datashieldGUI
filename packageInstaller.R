@@ -1,3 +1,8 @@
+#install.packages('dsBaseClient', repos='http://cran.obiba.org', type='source')
+#install.packages('dsModellingClient', repos='http://cran.obiba.org', type='source')
+#install.packages('dsGraphicsClient', repos='http://cran.obiba.org', type='source')
+#install.packages('dsStatsClient', repos='http://cran.obiba.org', type='source')
+
 # opalPackages() function checks that the required opal packages are loaded.
 # If they are not installed then they are installed and loaded.
 
@@ -8,6 +13,13 @@ opalPackages = function(){
 		install.packages("tcltk")
 		library(tcltk)
 	}
+
+	# DataSHIELD dependencies
+	if ( !require(fields) ){
+		install.packages("fields")
+		library(fields)
+	}
+
 
 	# Opal packages
 	if( !require(opal) ){
