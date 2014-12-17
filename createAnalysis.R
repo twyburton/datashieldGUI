@@ -15,7 +15,6 @@ drawCreateAnalysisWindow = function(){
 		user_conf <- toString(conf[3,2])
 		password_conf <- toString(conf[4,2])
 		table_conf <- toString(conf[5,2])
-
 	}
 	
 	# Create window
@@ -92,8 +91,6 @@ drawCreateAnalysisWindow = function(){
 
 	########################### END WINDOW FUNCTIONS SECTION ###########################
 
-
-
 	# Create main frame to hold componenets
 	windowframe = tkframe(base)
 
@@ -132,7 +129,6 @@ drawCreateAnalysisWindow = function(){
 	loginframe5 = tkframe(loginframe)
 	tkpack(tklabel(loginframe5,text='Table', width=20),side='left')
 	tkpack(tkentry(loginframe5,width=30,textvariable=table_), side='left', pady=c(2,2), padx=c(2,5))
-
 
 	# Pack input frames
 	tkpack(loginframe0,side='top')
@@ -205,7 +201,6 @@ drawCreateAnalysisWindow = function(){
 	tkpack(tklabel(saveframe1,text='Script Save Name', width=20),side='left')
 	savename_ = tclVar( "myscript.ds" )
 	tkpack(tkentry(saveframe1,width=30,textvariable=savename_), side='left', pady=c(2,2), padx=c(2,5))
-
 
 	# Pack input frames
 	tkpack(saveframe0,side='top')
