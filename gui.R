@@ -1,14 +1,9 @@
-# Import tclth Package
-require(tcltk)
-
 # Get R source data from files
 source("runAnalysis.R")
 source("createAnalysis.R")
 source("adapt.R")
+source("packageInstaller.R")
 
-# Import Opal
-library(opal)
-library(opaladmin)
 
 # Main GUI function
 runGUI = function(){
@@ -55,6 +50,8 @@ runGUI = function(){
 }
 
 
+# Check Core Packages are installed
+packages()
 
 # Get list available DS functions and import packages
 dsFunctionList <- getFunctions()
