@@ -1,4 +1,4 @@
-# Get R source data from files
+# Get R source data from gui component files
 source("runAnalysis.R")
 source("createAnalysis.R")
 source("packageInstaller.R")

@@ -17,6 +17,9 @@ The GUI:
 
 - Manages installing and importing opal packages
 - Manages importing correct ds packages before executing a script
+- Assists the user in creating DataSHIELD scripts
+
+The GUI.conf file can be used to save login details so that the user does not need to type on the login data every time.
 
 Requires:
 
