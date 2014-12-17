@@ -15,12 +15,12 @@ The DataSHIELD Package Installer is used to install DataSHIELD packages on R. Th
 
 The GUI:
 
-	- Manages installing and importing opal packages
-	- Manages importing correct ds packages before executing a script
+- Manages installing and importing opal packages
+- Manages importing correct ds packages before executing a script
 
 Requires:
 
-	- R >= Version 3.1.2 (r-base, r-base-dev)
-	- libcurl4-openssl-dev
+- R >= Version 3.1.2 (r-base, r-base-dev)
+- libcurl4-openssl-dev
 
 To execute use R command source("Path/To/gui.R")
