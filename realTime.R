@@ -160,13 +160,17 @@ functionSelection = function(){
 	base = tktoplevel()
 	tkwm.title(base,'DataSHIELD GUI')
 
-	# REAL TIME ANALYSIS FUNCTIONS
+	###########################  REAL TIME ANALYSIS FUNCTIONS ##########################################################
+	## LOGOUT OF OPALS ##
 	logout = function(){
 		datashield.logout(opals)
 		tkdestroy(base)
 		runGUI()
 	}
 
+	source("rtfunction.R")
+
+	########################### END REAL TIME ANALYSIS FUNCTIONS ##########################################################
 
 	# Create main frame to hold componenets
 	windowframe = tkframe(base)
@@ -175,8 +179,34 @@ functionSelection = function(){
 	analysisframe = tkframe(windowframe)
 	assignframe = tkframe(windowframe)
 
+	######## ANALYSIS FUNCTION BUTTONS ########
+
+        analysisframe0 = tkframe(analysisframe)
+        tkpack(tklabel(analysisframe0,text='Analysis', width=20),side='left')
+
+        analysisframe1 = tkframe(analysisframe)
+	tkpack(tkbutton(analysisframe1,text='ds.mean',command=rt.ds.mean),side='left', pady=c(10,10) , padx=c(10,5))
+	tkpack(tkbutton(analysisframe1,text='ds.table2D',command=rt.ds.table2D),side='left', pady=c(10,10) , padx=c(5,5))
+	tkpack(tkbutton(analysisframe1,text='ds.histogram',command=rt.ds.histogram),side='left', pady=c(10,10) , padx=c(5,10))
+
+	
+	tkpack(analysisframe)
+	tkpack(analysisframe0)
+	tkpack(analysisframe1)
+
+	######## ASSIGN FUNCTION BUTTONS ########
+
+        assignframe0 = tkframe(assignframe)
+        tkpack(tklabel(assignframe0,text='Assign', width=20),side='left')
+
+        assignframe1 = tkframe(assignframe)
+	tkpack(tkbutton(assignframe1,text='ds.log',command=rt.ds.log),side='left', pady=c(10,10) , padx=c(10,5))
+	tkpack(tkbutton(assignframe1,text='ds.exp',command=rt.ds.exp),side='left', pady=c(10,10) , padx=c(5,5))
 
 
+	tkpack(assignframe)
+	tkpack(assignframe0)
+	tkpack(assignframe1)
 
 
 
