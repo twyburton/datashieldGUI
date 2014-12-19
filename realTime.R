@@ -33,31 +33,32 @@ rTLogin = function(){
 	# Login function
 	login = function(){
 
-#####@@@@@@@@
+			tkdestroy(base)
+			
 			dataToWrite <- vector()
 
 			if (  grepl( "," , toString(tclvalue(servername_)) )  ){ # Multiple Servers
-				dataToWrite[1] <- paste0( "server <- " 		, strsplit( toString(tclvalue(servername_)), 	"," ) ,sep="")
-				dataToWrite[2] <- paste0( "url <- " 		, strsplit( toString(tclvalue(url_)) ,		"," ) ,sep="")
-				dataToWrite[3] <- paste0( "user <- " 		, strsplit( toString(tclvalue(user_)) , 	"," ) ,sep="")
-				dataToWrite[4] <- paste0( "password <- " 	, strsplit( toString(tclvalue(password_)) , 	"," ) ,sep="")
-				dataToWrite[5] <- paste0( "table <- " 		, strsplit( toString(tclvalue(table_)) , 	"," ) ,sep="")
-				dataToWrite[6] <- paste0( "myvars <- " 		, strsplit( toString(tclvalue(variables_)) , 	"," ) ,sep="")
+				dataToWrite[1] <- paste0( "server <<- " 	, strsplit( toString(tclvalue(servername_)), 	"," ) ,sep="")
+				dataToWrite[2] <- paste0( "url <<- " 		, strsplit( toString(tclvalue(url_)) ,		"," ) ,sep="")
+				dataToWrite[3] <- paste0( "user <<- " 		, strsplit( toString(tclvalue(user_)) , 	"," ) ,sep="")
+				dataToWrite[4] <- paste0( "password <<- " 	, strsplit( toString(tclvalue(password_)) , 	"," ) ,sep="")
+				dataToWrite[5] <- paste0( "table <<- " 		, strsplit( toString(tclvalue(table_)) , 	"," ) ,sep="")
+				dataToWrite[6] <- paste0( "myvars <<- " 	, strsplit( toString(tclvalue(variables_)) , 	"," ) ,sep="")
 			} else {						 # Single Server
 				dataToWrite[1] <- paste0( 'server <- "' 	, toString(tclvalue(servername_))	, '"' ,sep="")
 				dataToWrite[2] <- paste0( 'url <- "' 		, toString(tclvalue(url_)) 		, '"' ,sep="")
 				dataToWrite[3] <- paste0( 'user <- "' 		, toString(tclvalue(user_)) 		, '"' ,sep="")
 				dataToWrite[4] <- paste0( 'password <- "' 	, toString(tclvalue(password_)) 	, '"' ,sep="")
-				dataToWrite[5] <- paste0( 'table <- "' 		, toString(tclvalue(table_)) 		, '"' ,sep="")
+				dataToWrite[5] <- paste0( 'table <- "' 	, toString(tclvalue(table_)) 		, '"' ,sep="")
 				dataToWrite[6] <- paste0( 'myvars <- "' 	, toString(tclvalue(variables_)) 	, '"' ,sep="")
 			}
 
-			dataToWrite[7] <- "logindata <- data.frame(server,url,user,password,table)"
+			dataToWrite[7] <- "logindata <<- data.frame(server,url,user,password,table)"
 
 			if ( toString(tclvalue(variables_)) == "NULL" ){
-				dataToWrite[8] <- "opals <- datashield.login(logins=logindata, assign = TRUE)"
+				dataToWrite[8] <- "opals <<- datashield.login(logins=logindata, assign = TRUE)"
 			} else {
-				dataToWrite[8] <- "opals <- datashield.login(logins=logindata, variables=myvars , assign = TRUE)"
+				dataToWrite[8] <- "opals <<- datashield.login(logins=logindata, variables=myvars , assign = TRUE)"
 			}
 
 
@@ -65,8 +66,9 @@ rTLogin = function(){
 				eval(parse(text = dataToWrite[i]))
 			}
 
-			ds.mean("D$LAB_HDL")
-###@@@@@@@@@@@@@@@@@@@
+			functionSelection()
+			
+
 	}
 
 	########################### END WINDOW FUNCTIONS SECTION ###########################
@@ -147,12 +149,51 @@ rTLogin = function(){
 	# Control Buttons
 	tkpack(tkbutton(windowframe,text='Login',command=login),side='left', pady=c(10,10) , padx=c(10,5))
 	tkpack(tkbutton(windowframe,text='Back',command=destroy),side='left', pady=c(10,10) , padx=c(5,10))
-
-
-
 	
 }
 
+
+### RUN REAL TIME ANALYSIS CORE FUNCTION
+functionSelection = function(){
+
+	# Create window
+	base = tktoplevel()
+	tkwm.title(base,'DataSHIELD GUI')
+
+	# REAL TIME ANALYSIS FUNCTIONS
+	logout = function(){
+		datashield.logout(opals)
+		tkdestroy(base)
+		runGUI()
+	}
+
+
+	# Create main frame to hold componenets
+	windowframe = tkframe(base)
+
+	# Create frames to hold analysis and assign
+	analysisframe = tkframe(windowframe)
+	assignframe = tkframe(windowframe)
+
+
+
+
+
+
+
+	tkpack(windowframe)
+
+	# Control Buttons
+	tkpack(tkbutton(windowframe,text='Logout',command=logout),side='left', pady=c(10,10) , padx=c(10,5))
+
+}
+
+
+
+
+
+#### MAIN INITILISER FUNCTION
 realTimeAnalysisRun = function (){
 	rTLogin()
 }
+
