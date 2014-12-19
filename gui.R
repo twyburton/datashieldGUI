@@ -2,7 +2,7 @@
 source("runAnalysis.R")
 source("createAnalysis.R")
 source("packageInstaller.R")
-
+source("realTime.R")
 
 # Main GUI function
 runGUI = function(){
@@ -35,11 +35,18 @@ runGUI = function(){
 		destroyMainMenu() # Destroy menu window
 	}
 
+	# Function called when user pressed real time analysis
+	realTimeAnalysisButton = function(){
+		destroyMainMenu() # Destroy menu window
+		realTimeAnalysisRun()
+	}
+
 	# Function called when the user presses button to go to install packages menu
 	createDatashieldPackageInstaller = function(){
 		destroyMainMenu()	
 		datashieldPackageInstaller()
 	}
+
 
 	# Destroy Window function
 	destroyMainMenu = function(...)tkdestroy(mainMenu)
@@ -53,13 +60,19 @@ runGUI = function(){
 	installerframe = tkframe(mainMenu)
 	quitframe = tkframe(mainMenu)
 
-	tkpack(tkbutton(optionframe,text='Run Analysis',command=runAnalysisButton),side='left',pady=c(10,10) , padx=c(10,5))
-	tkpack(tkbutton(optionframe,text='Create Analysis',command=createAnalysisButton),side='left',pady=c(10,10) , padx=c(5,5))
+	tkpack(tkbutton(optionframe,text='Run Script',command=runAnalysisButton),side='left',pady=c(10,10) , padx=c(10,5))
+	tkpack(tkbutton(optionframe,text='Create Script',command=createAnalysisButton),side='left',pady=c(10,10) , padx=c(5,5))
+	tkpack(tkbutton(optionframe,text='Real Time Analysis',command=realTimeAnalysisButton),side='left',pady=c(10,10) , padx=c(10,5))
+
+
 	tkpack(tkbutton(installerframe,text='DataSHIELD Package Installer',command=createDatashieldPackageInstaller),side='top',pady=c(10,10) , padx=c(5,10))
 	tkpack(tkbutton(quitframe,text='Quit',command=destroyMainMenu),side='top',pady=c(10,10) , padx=c(5,10))
 
 	tkpack(installerframe)
 	tkpack(quitframe)
+
+
+
 
 }
 
@@ -70,5 +83,17 @@ opalPackages()
 # Get list available DS functions and import packages
 dsFunctionList <- getDsFunctions()
 
+
+print(dsFunctionList)
 # Run the first GUI window
 runGUI()
+
+
+# ANALYSIS
+#ds.mean
+#ds.table2D
+#ds.histogram
+
+# ASSIGN
+#ds.log
+#ds.exp
