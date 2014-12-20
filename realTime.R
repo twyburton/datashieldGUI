@@ -168,8 +168,6 @@ functionSelection = function(){
 		runGUI()
 	}
 
-	source("rtfunction.R")
-
 	########################### END REAL TIME ANALYSIS FUNCTIONS ##########################################################
 
 	# Create main frame to hold componenets
@@ -224,6 +222,17 @@ functionSelection = function(){
 
 #### MAIN INITILISER FUNCTION
 realTimeAnalysisRun = function (){
+
+	# Import source
+	for( i in 1:length(dsFunctionList) ){
+		fileToSource <- paste0("rtfunc/rt.", dsFunctionList[i]  ,".R", sep="")
+
+		if ( file.exists( fileToSource )  ){
+			source(fileToSource)
+		}
+	}
+
+	# Start login
 	rTLogin()
 }
 

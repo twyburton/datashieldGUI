@@ -81,7 +81,7 @@ runGUI = function(){
 opalPackages()
 
 # Get list available DS functions and import packages
-dsFunctionList <- getDsFunctions()
+dsFunctionList <<- getDsFunctions()
 
 
 print(dsFunctionList)
