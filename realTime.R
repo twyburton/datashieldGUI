@@ -223,7 +223,7 @@ functionSelection = function(){
 #### MAIN INITILISER FUNCTION
 realTimeAnalysisRun = function (){
 
-	# Import source
+	# Import source files for rt functions
 	for( i in 1:length(dsFunctionList) ){
 		fileToSource <- paste0("rtfunc/rt.", dsFunctionList[i]  ,".R", sep="")
 

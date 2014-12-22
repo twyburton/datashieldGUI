@@ -1,9 +1,7 @@
-############ Real Time Analysis Function ############
-
-
-#### Statistical Analysis ####
+# Real time ds.histogram function
 rt.ds.histogram = function(){
 	
+	# Execute function
 	ex.ds.histogram = function(){
 		tkdestroy(window.ds.histogram)
 		x <- toString(tclvalue(xinput_))
@@ -11,10 +9,12 @@ rt.ds.histogram = function(){
 		print(eval(parse(text=   paste0("ds.histogram('", x ,"','", type ,"')" , sep="")   )))
 	}
 
+	# Cancel function
 	cl.ds.histogram = function(){
 		tkdestroy(window.ds.histogram)
 	}
 
+	# Draw input window
 	window.ds.histogram = tktoplevel()
 	tkwm.title(window.ds.histogram,'ds.histogram()')
 	inputframe0 = tkframe(window.ds.histogram)

@@ -1,9 +1,7 @@
-############ Real Time Analysis Function ############
-
-
-#### Statistical Analysis ####
+# Real time ds.exp function
 rt.ds.exp = function(){
 	
+	# Execute function
 	ex.ds.exp = function(){
 		tkdestroy(window.ds.exp)
 		x <- toString(tclvalue(xinput_))
@@ -11,10 +9,12 @@ rt.ds.exp = function(){
 		print(eval(parse(text=   paste0("ds.exp('", x , "','", newobj ,"')" , sep="")   )))
 	}
 
+	# Cancel function
 	cl.ds.exp = function(){
 		tkdestroy(window.ds.exp)
 	}
 
+	# Draw input window
 	window.ds.exp = tktoplevel()
 	tkwm.title(window.ds.exp,'ds.exp()')
 	inputframe0 = tkframe(window.ds.exp)

@@ -1,9 +1,7 @@
-############ Real Time Analysis Function ############
-
-
-#### Statistical Analysis ####
+# Real time ds.table2D function
 rt.ds.table2D = function(){
 	
+	# Execute function
 	ex.ds.table2D = function(){
 		tkdestroy(window.ds.table2D)
 		x <- toString(tclvalue(xinput_))
@@ -12,10 +10,12 @@ rt.ds.table2D = function(){
 		print(eval(parse(text=   paste0("ds.table2D('", x , "','" , y , "','", type ,"')" , sep="")   )))
 	}
 
+	# Cancel function
 	cl.ds.table2D = function(){
 		tkdestroy(window.ds.table2D)
 	}
 
+	# Draw input window
 	window.ds.table2D = tktoplevel()
 	tkwm.title(window.ds.table2D,'ds.table2D()')
 	inputframe0 = tkframe(window.ds.table2D)

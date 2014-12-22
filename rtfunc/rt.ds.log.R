@@ -1,9 +1,7 @@
-############ Real Time Analysis Function ############
-
-
-#### Statistical Analysis ####
+# Real time ds.log function
 rt.ds.log = function(){
 	
+	# Execute function
 	ex.ds.log = function(){
 		tkdestroy(window.ds.log)
 		x <- toString(tclvalue(xinput_))
@@ -12,10 +10,12 @@ rt.ds.log = function(){
 		print(eval(parse(text=   paste0("ds.log('", x , "','" , basevar , "','", newobj ,"')" , sep="")   )))
 	}
 
+	# Cancel function
 	cl.ds.log = function(){
 		tkdestroy(window.ds.log)
 	}
 
+	# Draw input window
 	window.ds.log = tktoplevel()
 	tkwm.title(window.ds.log,'ds.log()')
 	inputframe0 = tkframe(window.ds.log)

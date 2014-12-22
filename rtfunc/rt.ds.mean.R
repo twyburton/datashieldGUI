@@ -1,9 +1,7 @@
-############ Real Time Analysis Function ############
-
-
-#### Statistical Analysis ####
+# Real time ds.mean function
 rt.ds.mean = function(){
 	
+	# Execute function
 	ex.ds.mean = function(){
 		tkdestroy(window.ds.mean)
 		x <- toString(tclvalue(xinput_))
@@ -11,10 +9,12 @@ rt.ds.mean = function(){
 		print(eval(parse(text=   paste0("ds.mean('", x ,"','", type ,"')" , sep="")   )))
 	}
 
+	# Cancel function
 	cl.ds.mean = function(){
 		tkdestroy(window.ds.mean)
 	}
 
+	# Draw input window
 	window.ds.mean = tktoplevel()
 	tkwm.title(window.ds.mean,'ds.mean()')
 	inputframe0 = tkframe(window.ds.mean)
