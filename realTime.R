@@ -6,6 +6,7 @@ rTLogin = function(){
 	user_conf <- ""
 	password_conf <- ""
 	table_conf <- ""
+	autolog_conf <- "false"
 
 	# Get config file data
 	if ( file.exists("GUI.conf") ){
@@ -16,6 +17,7 @@ rTLogin = function(){
 		user_conf <- toString(conf[3,2])
 		password_conf <- toString(conf[4,2])
 		table_conf <- toString(conf[5,2])
+		autolog_conf <- toString(conf[6,2])
 	}
 	
 	# Create window
@@ -149,6 +151,10 @@ rTLogin = function(){
 	# Control Buttons
 	tkpack(tkbutton(windowframe,text='Login',command=login),side='left', pady=c(10,10) , padx=c(10,5))
 	tkpack(tkbutton(windowframe,text='Back',command=destroy),side='left', pady=c(10,10) , padx=c(5,10))
+
+	if ( autolog_conf == "true" ){
+		login()
+	}
 	
 }
 
