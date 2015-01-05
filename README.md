@@ -54,4 +54,7 @@ Requirements
 How To Run The GUI
 ------------------
 
-To execute use R command source("Path/To/gui.R")
+To execute use R command
+```
+source("Path/To/gui.R")
+```
