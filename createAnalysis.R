@@ -19,7 +19,7 @@ drawCreateAnalysisWindow = function(){
 	
 	# Create window
 	base = tktoplevel()
-	tkwm.title(base,'DataSHIELD GUI')
+	tkwm.title(base,'DataSHIELD Lite')
 
 	########################### WINDOW FUNCTIONS SECTION ###########################
 

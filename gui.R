@@ -8,7 +8,7 @@ source("realTime.R")
 runGUI = function(){
 	# Create window
 	mainMenu = tktoplevel()
-	tkwm.title(mainMenu,'DataSHIELD GUI')
+	tkwm.title(mainMenu,'DataSHIELD Lite')
 	optionframe = tkframe(mainMenu)
 
 

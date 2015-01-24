@@ -83,7 +83,7 @@ getDsFunctions = function() {
 datashieldPackageInstaller = function(){
 # Create window
         dspackageinstaller = tktoplevel()
-        tkwm.title(dspackageinstaller,'DataSHIELD GUI')
+        tkwm.title(dspackageinstaller,'DataSHIELD Lite')
         optionframe = tkframe(dspackageinstaller)
 
 

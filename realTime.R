@@ -68,6 +68,26 @@ rTLogin = function(){
 				eval(parse(text = dataToWrite[i]))
 			}
 
+			##### GET VARIABLES FROM SERVER #####
+			cat("\nFetching List of variables from server...")
+
+			# get the names of the variables
+			varnames <- unique(unlist(ds.colnames('D')))
+
+			# get variables types
+			types <- c()
+			for(i in 1:length(varnames)){
+				t <- unique(unlist(ds.class(paste0('D$', varnames[i]))))
+				types <- append(types, t)
+			}
+
+			# create the output table
+			table2display <- data.frame(varnames,types)
+			colnames(table2display) <- c("Name", "Type")
+
+			print(table2display)
+
+			##### continue with real time analysis
 			functionSelection()
 			
 
@@ -164,7 +184,7 @@ functionSelection = function(){
 
 	# Create window
 	base = tktoplevel()
-	tkwm.title(base,'DataSHIELD GUI')
+	tkwm.title(base,'DataSHIELD Lite')
 
 	###########################  REAL TIME ANALYSIS FUNCTIONS ##########################################################
 	## LOGOUT OF OPALS ##
@@ -191,12 +211,17 @@ functionSelection = function(){
         analysisframe1 = tkframe(analysisframe)
 	tkpack(tkbutton(analysisframe1,text='ds.mean',command=rt.ds.mean),side='left', pady=c(10,10) , padx=c(10,5))
 	tkpack(tkbutton(analysisframe1,text='ds.table2D',command=rt.ds.table2D),side='left', pady=c(10,10) , padx=c(5,5))
-	tkpack(tkbutton(analysisframe1,text='ds.histogram',command=rt.ds.histogram),side='left', pady=c(10,10) , padx=c(5,10))
+	tkpack(tkbutton(analysisframe1,text='ds.histogram',command=rt.ds.histogram),side='left', pady=c(10,10) , padx=c(5,5))
+	tkpack(tkbutton(analysisframe1,text='ds.colnames',command=rt.ds.colnames),side='left', pady=c(10,10) , padx=c(5,10))
 
+        analysisframe2 = tkframe(analysisframe)
+	tkpack(tkbutton(analysisframe2,text='ds.quantileMean',command=rt.ds.quantileMean),side='left', pady=c(10,10) , padx=c(10,5))
+	tkpack(tkbutton(analysisframe2,text='ds.table1D',command=rt.ds.table1D),side='left', pady=c(10,10) , padx=c(5,10))
 	
 	tkpack(analysisframe)
 	tkpack(analysisframe0)
 	tkpack(analysisframe1)
+	tkpack(analysisframe2)
 
 	######## ASSIGN FUNCTION BUTTONS ########
 
